@@ -24,7 +24,9 @@
 				"--enable-decoder=h264",
 				"--enable-decoder=hevc",
 				"--enable-hwaccel=h264_vaapi",
-				"--enable-hwaccel=hevc_vaapi"
+				"--enable-hwaccel=hevc_vaapi",
+				"--enable-hwaccel=h264_vdpau",
+				"--enable-hwaccel=hevc_vdpau"
 			],
 			"sources": [
 				{
@@ -41,8 +43,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"tag": "v0.0.5",
-					"commit": "979ba2dab7627bf392875435e88ce203df0d4411"
+					"tag": "v0.1.0",
+					"commit": "9beb51ecac58bd6ff08c389a9cd1ef81139a0724"
 				}
 			]
 		}
