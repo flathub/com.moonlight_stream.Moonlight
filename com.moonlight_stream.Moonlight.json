@@ -8,6 +8,7 @@
 	"finish-args": [
 		"--share=network",
 		"--socket=x11",
+		"--socket=wayland",
 		"--share=ipc",
 		"--socket=pulseaudio",
 		"--device=all"
@@ -43,8 +44,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"tag": "v0.1.0",
-					"commit": "9beb51ecac58bd6ff08c389a9cd1ef81139a0724"
+					"tag": "v0.2.0",
+					"commit": "860d317330a27b39dafe5f72acefd6dc7bc75fff"
 				}
 			]
 		}
