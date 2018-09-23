@@ -38,14 +38,22 @@
 			]
 		},
 		{
+			"name": "portaudio",
+			"sources": [
+				{
+					"type": "archive",
+					"url": "http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz",
+					"sha256": "f5a21d7dcd6ee84397446fa1fa1a0675bb2e8a4a6dceb4305a8404698d8d1513"
+				}
+			]
+		},
+		{
 			"name": "moonlight",
 			"buildsystem": "qmake",
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"tag": "v0.5.0",
-					"commit": "1f759577ce26456aa75bf445b658a91b295cfdcf"
+					"url": "https://github.com/moonlight-stream/moonlight-qt.git"
 				}
 			]
 		}
