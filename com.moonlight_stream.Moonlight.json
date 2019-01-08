@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.11",
+	"runtime-version": "5.12",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -18,8 +18,8 @@
 			"name": "ffmpeg",
 			"config-opts": [
 				"--enable-pic",
-				"--enable-shared",
-				"--disable-static",
+				"--enable-static",
+				"--disable-shared",
 				"--disable-all",
 				"--enable-avcodec",
 				"--enable-decoder=h264",
@@ -32,8 +32,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "https://ffmpeg.org/releases/ffmpeg-4.0.2.tar.bz2",
-					"sha256": "346c51735f42c37e0712e0b3d2f6476c86ac15863e4445d9e823fe396420d056"
+					"url": "https://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2",
+					"sha256": "b684fb43244a5c4caae652af9022ed5d85ce15210835bce054a33fb26033a1a5"
 				}
 			]
 		},
