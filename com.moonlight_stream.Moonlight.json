@@ -13,6 +13,7 @@
 		"--socket=pulseaudio",
 		"--device=all"
 	],
+	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
 		{
 			"name": "ffmpeg",
