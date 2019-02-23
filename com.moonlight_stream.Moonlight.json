@@ -11,7 +11,9 @@
 		"--socket=wayland",
 		"--share=ipc",
 		"--socket=pulseaudio",
-		"--device=all"
+		"--device=all",
+		"--env=LIBVA_DRIVER_NAME=",
+		"--env=LIBVA_DRIVERS_PATH="
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
