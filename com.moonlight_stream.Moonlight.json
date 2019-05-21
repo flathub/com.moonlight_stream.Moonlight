@@ -47,8 +47,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"tag": "v0.10.1",
-					"commit": "cb75b3d6d29dd129c0c72d84bf74b78a11c42cff"
+					"tag": "v1.0.0",
+					"commit": "3df9a5d01c434f38cf1963972e394290e4b8b4c8"
 				}
 			]
 		}
