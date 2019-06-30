@@ -18,6 +18,21 @@
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
 		{
+			"name": "ffnvcodec",
+			"no-autogen": true,
+			"make-install-args": [
+				"PREFIX=/app"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
+					"tag": "n9.0.18.1",
+					"commit": "5eeca8cc95267d55030e98a051effa47c45f13f3"
+				}
+			]
+		},
+		{
 			"name": "ffmpeg",
 			"config-opts": [
 				"--enable-pic",
@@ -25,12 +40,15 @@
 				"--disable-shared",
 				"--disable-all",
 				"--enable-avcodec",
+				"--enable-nvdec",
 				"--enable-decoder=h264",
 				"--enable-decoder=hevc",
 				"--enable-hwaccel=h264_vaapi",
 				"--enable-hwaccel=hevc_vaapi",
 				"--enable-hwaccel=h264_vdpau",
-				"--enable-hwaccel=hevc_vdpau"
+				"--enable-hwaccel=hevc_vdpau",
+				"--enable-hwaccel=h264_nvdec",
+				"--enable-hwaccel=hevc_nvdec"
 			],
 			"sources": [
 				{
