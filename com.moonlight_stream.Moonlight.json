@@ -34,22 +34,37 @@
 		},
 		{
 			"name": "ffmpeg",
-			"config-opts": [
-				"--enable-pic",
-				"--enable-static",
-				"--disable-shared",
-				"--disable-all",
-				"--enable-avcodec",
-				"--enable-nvdec",
-				"--enable-decoder=h264",
-				"--enable-decoder=hevc",
-				"--enable-hwaccel=h264_vaapi",
-				"--enable-hwaccel=hevc_vaapi",
-				"--enable-hwaccel=h264_vdpau",
-				"--enable-hwaccel=hevc_vdpau",
-				"--enable-hwaccel=h264_nvdec",
-				"--enable-hwaccel=hevc_nvdec"
-			],
+			"build-options": {
+				"config-opts": [
+					"--enable-pic",
+					"--enable-static",
+					"--disable-shared",
+					"--disable-all",
+					"--enable-avcodec",
+					"--enable-decoder=h264",
+					"--enable-decoder=hevc",
+					"--enable-hwaccel=h264_vaapi",
+					"--enable-hwaccel=hevc_vaapi",
+					"--enable-hwaccel=h264_vdpau",
+					"--enable-hwaccel=hevc_vdpau"
+				],
+				"arch": {
+					"x86_64": {
+						"config-opts": [
+							"--enable-nvdec",
+							"--enable-hwaccel=h264_nvdec",
+							"--enable-hwaccel=hevc_nvdec"
+						]
+					},
+					"i386": {
+						"config-opts": [
+							"--enable-nvdec",
+							"--enable-hwaccel=h264_nvdec",
+							"--enable-hwaccel=hevc_nvdec"
+						]
+					}
+				}
+			},
 			"sources": [
 				{
 					"type": "archive",
