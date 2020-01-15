@@ -15,7 +15,12 @@
 		"--env=LIBVA_DRIVER_NAME=",
 		"--env=LIBVA_DRIVERS_PATH="
 	],
-	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
+	"cleanup": [
+		"/include",
+		"*.a",
+		"*.la",
+		"*.pc"
+	],
 	"modules": [
 		{
 			"name": "SDL2",
@@ -67,6 +72,35 @@
 			]
 		},
 		{
+			"name": "rpi-userland",
+			"buildsystem": "cmake",
+			"config-opts": [
+				"-DVMCS_INSTALL_PREFIX=/app"
+			],
+			"only-arches": [
+				"arm",
+				"aarch64"
+			],
+			"cleanup": [
+				"/bin",
+				"/src",
+				"/lib/libbrcm*.so",
+				"/lib/libEGL.so",
+				"/lib/libGLESv2.so",
+				"/lib/libopenmaxil.so",
+				"/lib/libOpenVG.so",
+				"/lib/libWFC.so",
+				"/lib/plugins"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/raspberrypi/userland.git",
+					"commit": "06bc6daa02137ca72b7a2104afad81e82a44de17"
+				}
+			]
+		},
+		{
 			"name": "ffmpeg",
 			"build-options": {
 				"config-opts": [
@@ -96,9 +130,24 @@
 							"--enable-hwaccel=h264_nvdec",
 							"--enable-hwaccel=hevc_nvdec"
 						]
+					},
+					"arm": {
+						"config-opts": [
+							"--enable-mmal",
+							"--enable-decoder=h264_mmal"
+						]
+					},
+					"aarch64": {
+						"config-opts": [
+							"--enable-mmal",
+							"--enable-decoder=h264_mmal"
+						]
 					}
 				}
 			},
+			"cleanup": [
+				"/share/ffmpeg"
+			],
 			"sources": [
 				{
 					"type": "archive",
