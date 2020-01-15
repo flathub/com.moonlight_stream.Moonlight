@@ -74,9 +74,23 @@
 		{
 			"name": "rpi-userland",
 			"buildsystem": "cmake",
-			"config-opts": [
-				"-DVMCS_INSTALL_PREFIX=/app"
-			],
+			"build-options": {
+				"config-opts": [
+					"-DVMCS_INSTALL_PREFIX=/app"
+				],
+				"arch": {
+					"arm": {
+						"config-opts": [
+							"-DARM64=0"
+						]
+					},
+					"aarch64": {
+						"config-opts": [
+							"-DARM64=1"
+						]
+					}
+				}
+			},
 			"only-arches": [
 				"arm",
 				"aarch64"
