@@ -1,0 +1,79 @@
+# HG changeset patch
+# User Cameron Gutman <cameron.gutman@gmail.com>
+# Date 1574310465 28800
+#      Wed Nov 20 20:27:45 2019 -0800
+# Node ID db9c67c723658786b44b62fb4e14c4d1ab0386e9
+# Parent  7e5406b2375a9076303262d40cbb910a9d715315
+Use stat() to minimize input device opens when not using udev
+
+Calling open() on input devices can generate device I/O which blocks
+the main thread and causes dropped frames. Using stat() we can avoid
+opening anything unless /dev/input has changed since we last polled.
+
+We could have used something fancy like inotify, but it didn't seem
+worth the added complexity for this uncommon non-udev case.
+
+diff -r 7e5406b2375a -r db9c67c72365 src/joystick/linux/SDL_sysjoystick.c
+--- a/src/joystick/linux/SDL_sysjoystick.c	Wed Nov 20 16:42:50 2019 -0800
++++ b/src/joystick/linux/SDL_sysjoystick.c	Wed Nov 20 20:27:45 2019 -0800
+@@ -80,7 +80,8 @@
+ static int numjoysticks = 0;
+ 
+ #if !SDL_USE_LIBUDEV
+-static Uint32 last_joy_detect_time = 0;
++static Uint32 last_joy_detect_time;
++static time_t last_input_dir_mtime;
+ #endif
+ 
+ #define test_bit(nr, addr) \
+@@ -421,21 +422,28 @@
+     Uint32 now = SDL_GetTicks();
+ 
+     if (!last_joy_detect_time || SDL_TICKS_PASSED(now, last_joy_detect_time + SDL_JOY_DETECT_INTERVAL_MS)) {
+-        DIR *folder;
+-        struct dirent *dent;
++        struct stat sb;
++
++        /* Opening input devices can generate synchronous device I/O, so avoid it if we can */
++        if (stat("/dev/input", &sb) == 0 && sb.st_mtime != last_input_dir_mtime) {
++            DIR *folder;
++            struct dirent *dent;
+ 
+-        folder = opendir("/dev/input");
+-        if (folder) {
+-            while ((dent = readdir(folder))) {
+-                int len = SDL_strlen(dent->d_name);
+-                if (len > 5 && SDL_strncmp(dent->d_name, "event", 5) == 0) {
+-                    char path[PATH_MAX];
+-                    SDL_snprintf(path, SDL_arraysize(path), "/dev/input/%s", dent->d_name);
+-                    MaybeAddDevice(path);
++            folder = opendir("/dev/input");
++            if (folder) {
++                while ((dent = readdir(folder))) {
++                    int len = SDL_strlen(dent->d_name);
++                    if (len > 5 && SDL_strncmp(dent->d_name, "event", 5) == 0) {
++                        char path[PATH_MAX];
++                        SDL_snprintf(path, SDL_arraysize(path), "/dev/input/%s", dent->d_name);
++                        MaybeAddDevice(path);
++                    }
+                 }
++
++                closedir(folder);
+             }
+ 
+-            closedir(folder);
++            last_input_dir_mtime = sb.st_mtime;
+         }
+ 
+         last_joy_detect_time = now;
+@@ -483,6 +491,10 @@
+     /* Force a scan to build the initial device list */
+     SDL_UDEV_Scan();
+ #else
++    /* Force immediate joystick detection */
++    last_joy_detect_time = 0;
++    last_input_dir_mtime = 0;
++
+     /* Report all devices currently present */
+     LINUX_JoystickDetect();
+ #endif
