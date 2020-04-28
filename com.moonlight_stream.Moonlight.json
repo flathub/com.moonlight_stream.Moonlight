@@ -110,8 +110,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"branch": "v1.2.1-gcdb",
-					"commit": "c1bf756edcd03bbba008b7b6e558315d478f335d"
+					"tag": "v2.0.0",
+					"commit": "0e8572e1dbbcab8ca4e34261a2d7c55c79e4c457"
 				}
 			]
 		}
