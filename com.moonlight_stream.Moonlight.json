@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.13",
+	"runtime-version": "5.15",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -17,32 +17,6 @@
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
-		{
-			"name": "SDL2",
-			"build-options": {
-				"config-opts": [
-					"--prefix=/app",
-					"--enable-sdl-dlopen",
-					"--disable-arts",
-					"--disable-esd",
-					"--disable-nas",
-					"--disable-alsa",
-					"--disable-oss",
-					"--disable-sndio",
-					"--disable-libudev",
-					"--enable-video-wayland",
-					"--enable-wayland-shared=no",
-					"--disable-rpath"
-				]
-			},
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://libsdl.org/release/SDL2-2.0.12.tar.gz",
-					"sha256": "349268f695c02efbc9b9148a70b85e58cefbbf704abd3e91be654db7f1e2c863"
-				}
-			]
-		},
 		{
 			"name": "ffnvcodec",
 			"no-autogen": true,
