@@ -20,10 +20,6 @@
 		{
 			"name": "ffnvcodec",
 			"no-autogen": true,
-			"only-arches": [
-				"i386",
-				"x86_64"
-			],
 			"make-install-args": [
 				"PREFIX=/app"
 			],
@@ -31,8 +27,8 @@
 				{
 					"type": "git",
 					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
-					"tag": "n8.1.24.11",
-					"commit": "0cd5c2b7c30d580d09348c92d8facd7a39957f01"
+					"tag": "n8.1.24.12",
+					"commit": "b3ac16bdb329d67fa9fe3dff7af8e14e23bf1e0f"
 				}
 			]
 		},
@@ -50,24 +46,11 @@
 					"--enable-hwaccel=h264_vaapi",
 					"--enable-hwaccel=hevc_vaapi",
 					"--enable-hwaccel=h264_vdpau",
-					"--enable-hwaccel=hevc_vdpau"
-				],
-				"arch": {
-					"x86_64": {
-						"config-opts": [
-							"--enable-nvdec",
-							"--enable-hwaccel=h264_nvdec",
-							"--enable-hwaccel=hevc_nvdec"
-						]
-					},
-					"i386": {
-						"config-opts": [
-							"--enable-nvdec",
-							"--enable-hwaccel=h264_nvdec",
-							"--enable-hwaccel=hevc_nvdec"
-						]
-					}
-				}
+					"--enable-hwaccel=hevc_vdpau",
+					"--enable-nvdec",
+					"--enable-hwaccel=h264_nvdec",
+					"--enable-hwaccel=hevc_nvdec"
+				]
 			},
 			"sources": [
 				{
