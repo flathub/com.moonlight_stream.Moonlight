@@ -18,6 +18,32 @@
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
 		{
+			"name": "SDL2",
+			"build-options": {
+				"config-opts": [
+					"--prefix=/app",
+					"--enable-sdl-dlopen",
+					"--disable-arts",
+					"--disable-esd",
+					"--disable-nas",
+					"--disable-alsa",
+					"--disable-oss",
+					"--disable-sndio",
+					"--disable-libudev",
+					"--enable-video-wayland",
+					"--enable-wayland-shared=no",
+					"--disable-rpath"
+				]
+			},
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://libsdl.org/release/SDL2-2.0.14.tar.gz",
+					"sha256": "d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc"
+				}
+			]
+		},
+		{
 			"name": "ffnvcodec",
 			"no-autogen": true,
 			"make-install-args": [
