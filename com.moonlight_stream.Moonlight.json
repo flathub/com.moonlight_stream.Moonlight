@@ -39,7 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/spurious/SDL-mirror.git",
-					"commit": "400a038a389442d2eecbac811e8611bc50d222a4"
+					"commit": "57d1ca4809a16cca338483f8e80f194c3009f0bd"
 				}
 			]
 		},
