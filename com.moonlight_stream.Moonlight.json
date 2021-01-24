@@ -12,6 +12,7 @@
 		"--share=ipc",
 		"--socket=pulseaudio",
 		"--device=all",
+		"--talk-name=org.freedesktop.ScreenSaver",
 		"--env=LIBVA_DRIVER_NAME="
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
@@ -38,7 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/spurious/SDL-mirror.git",
-					"commit": "57d1ca4809a16cca338483f8e80f194c3009f0bd"
+					"commit": "0530ff844dfefc5d89f67b1f56b50dbd6bb17f70"
 				}
 			]
 		},
