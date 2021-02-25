@@ -38,8 +38,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/spurious/SDL-mirror.git",
-					"commit": "0530ff844dfefc5d89f67b1f56b50dbd6bb17f70"
+					"url": "https://github.com/libsdl-org/SDL.git",
+					"commit": "e561ce3a7536d0906460b894b4d17a72ba9641c8"
 				}
 			]
 		},
