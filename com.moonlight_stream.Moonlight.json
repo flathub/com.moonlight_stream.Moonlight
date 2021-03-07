@@ -75,7 +75,9 @@
 					"--enable-hwaccel=hevc_vdpau",
 					"--enable-nvdec",
 					"--enable-hwaccel=h264_nvdec",
-					"--enable-hwaccel=hevc_nvdec"
+					"--enable-hwaccel=hevc_nvdec",
+					"--enable-decoder=h264_v4l2m2m",
+					"--enable-decoder=hevc_v4l2m2m"
 				]
 			},
 			"sources": [
