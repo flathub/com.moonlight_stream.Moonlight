@@ -77,15 +77,16 @@
 					"--enable-nvdec",
 					"--enable-hwaccel=h264_nvdec",
 					"--enable-hwaccel=hevc_nvdec",
+					"--enable-libdrm",
 					"--enable-decoder=h264_v4l2m2m",
 					"--enable-decoder=hevc_v4l2m2m"
 				]
 			},
 			"sources": [
 				{
-					"type": "archive",
-					"url": "https://ffmpeg.org/releases/ffmpeg-4.3.1.tar.bz2",
-					"sha256": "f4a4ac63946b6eee3bbdde523e298fca6019d048d6e1db0d1439a62cea65f0d9"
+					"type": "git",
+					"url": "https://github.com/cgutman/FFmpeg.git",
+					"commit": "0cfe7c33bbbba6bc33726a7a106c585c359a5ac0"
 				}
 			]
 		},
