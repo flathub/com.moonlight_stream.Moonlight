@@ -32,6 +32,7 @@
 					"--disable-libudev",
 					"--enable-video-wayland",
 					"--enable-wayland-shared=no",
+					"--enable-video-kmsdrm",
 					"--disable-rpath"
 				]
 			},
@@ -95,8 +96,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"tag": "v3.0.0",
-					"commit": "14a6a69dc016b644814b6ad5cb7b77dbd0d78708"
+					"tag": "v3.1.0",
+					"commit": "e21fd19a70ebf875c9bf389a68416b4116fbd20e"
 				}
 			]
 		}
