@@ -18,6 +18,22 @@
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
 		{
+			"name": "libdecor",
+			"buildsystem": "meson",
+			"build-options": {
+				"config-opts": [
+					"-Ddemo=false"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://gitlab.gnome.org/jadahl/libdecor.git",
+					"commit": "754432e3b38356583a9a1270e2b0be7f097968e0"
+				}
+			]
+		},
+		{
 			"name": "SDL2",
 			"build-options": {
 				"config-opts": [
