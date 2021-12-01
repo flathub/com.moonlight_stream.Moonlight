@@ -22,7 +22,6 @@
 			"build-options": {
 				"config-opts": [
 					"--prefix=/app",
-					"--enable-sdl-dlopen",
 					"--disable-arts",
 					"--disable-esd",
 					"--disable-nas",
@@ -30,9 +29,6 @@
 					"--disable-oss",
 					"--disable-sndio",
 					"--disable-libudev",
-					"--enable-video-wayland",
-					"--enable-wayland-shared=no",
-					"--enable-video-kmsdrm",
 					"--disable-rpath"
 				]
 			},
@@ -40,7 +36,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"commit": "dfa64eadd38a6a8125290dcf121f1bc285e98dad"
+					"tag": "release-2.0.18",
+					"commit": "2e9821423a237a1206e3c09020778faacfe430be"
 				}
 			]
 		},
@@ -54,8 +51,8 @@
 				{
 					"type": "git",
 					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
-					"tag": "n8.1.24.12",
-					"commit": "b3ac16bdb329d67fa9fe3dff7af8e14e23bf1e0f"
+					"tag": "n8.1.24.13",
+					"commit": "a80f80e2b65fa1e898ccd6464f24d66abb58238b"
 				}
 			]
 		},
