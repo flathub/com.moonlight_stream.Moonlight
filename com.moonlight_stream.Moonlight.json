@@ -99,7 +99,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"commit": "0cfe7c33bbbba6bc33726a7a106c585c359a5ac0"
+					"branch": "moonlight_4_3_3",
+					"commit": "aa8dda66af35ef782d05976086b36602f3a70950"
 				}
 			]
 		},
