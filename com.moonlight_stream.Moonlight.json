@@ -52,8 +52,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-2.0.18",
-					"commit": "2e9821423a237a1206e3c09020778faacfe430be"
+					"tag": "release-2.0.20",
+					"commit": "b424665e0899769b200231ba943353a5fee1b6b6"
 				}
 			]
 		},
