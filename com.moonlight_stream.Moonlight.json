@@ -52,8 +52,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/libsdl-org/SDL.git",
-					"commit": "cbdb67b4f655000de35acb5629ddb08cc6761e8a"
+					"url": "https://github.com/cgutman/SDL.git",
+					"commit": "5a5ba34b0ec55b5563198eff5eb475eb0b16f092"
 				}
 			]
 		},
