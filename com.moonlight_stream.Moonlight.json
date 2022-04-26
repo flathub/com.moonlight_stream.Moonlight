@@ -99,7 +99,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"branch": "moonlight_5_0_0",
+					"//": "branch: moonlight_5_0_0",
 					"commit": "584407f59b7934033c50912cf7f6dbb7d689687c"
 				}
 			]
