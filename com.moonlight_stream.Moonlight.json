@@ -30,7 +30,7 @@
 				{
 					"type": "git",
 					"url": "https://gitlab.gnome.org/jadahl/libdecor.git",
-					"commit": "a382710b47de8a12857cf2468b391c3428d78323"
+					"commit": "5e58ec6258a45d3149f83e28acb997962cbfc170"
 				}
 			]
 		},
@@ -53,7 +53,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"commit": "a95f5a792c2b80e817ca7ad4d4d3e75e107873a6"
+					"commit": "a09d62e4d81522a04e5bd04346d1b22f02ade890"
 				}
 			]
 		},
