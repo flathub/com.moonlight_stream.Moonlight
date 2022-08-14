@@ -53,7 +53,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"commit": "602b7dd0f4a8291e847babfc38bae5a4bbdcc912"
+					"commit": "c6c688ab0184234f3ea8240be80df405fdda5b9a"
 				}
 			]
 		},
