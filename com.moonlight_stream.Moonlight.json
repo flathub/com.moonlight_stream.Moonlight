@@ -1,28 +1,45 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.13",
+	"runtime-version": "5.15-22.08",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
 	"finish-args": [
 		"--share=network",
-		"--socket=x11",
+		"--socket=fallback-x11",
 		"--socket=wayland",
 		"--share=ipc",
 		"--socket=pulseaudio",
 		"--device=all",
-		"--env=LIBVA_DRIVER_NAME=",
-		"--env=LIBVA_DRIVERS_PATH="
+		"--talk-name=org.freedesktop.ScreenSaver",
+		"--env=IGNORE_RFI_LATENCY_BUG=1",
+		"--env=QT_QUICK_CONTROLS_STYLE=Material",
+		"--env=LIBVA_DRIVER_NAME="
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
+		{
+			"name": "libdecor",
+			"buildsystem": "meson",
+			"build-options": {
+				"config-opts": [
+					"-Ddemo=false"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://gitlab.gnome.org/jadahl/libdecor.git",
+					"commit": "5e58ec6258a45d3149f83e28acb997962cbfc170"
+				}
+			]
+		},
 		{
 			"name": "SDL2",
 			"build-options": {
 				"config-opts": [
 					"--prefix=/app",
-					"--enable-sdl-dlopen",
 					"--disable-arts",
 					"--disable-esd",
 					"--disable-nas",
@@ -30,26 +47,20 @@
 					"--disable-oss",
 					"--disable-sndio",
 					"--disable-libudev",
-					"--enable-video-wayland",
-					"--enable-wayland-shared=no",
 					"--disable-rpath"
 				]
 			},
 			"sources": [
 				{
-					"type": "archive",
-					"url": "https://libsdl.org/release/SDL2-2.0.12.tar.gz",
-					"sha256": "349268f695c02efbc9b9148a70b85e58cefbbf704abd3e91be654db7f1e2c863"
+					"type": "git",
+					"url": "https://github.com/libsdl-org/SDL.git",
+					"commit": "30c2dac78718f68d6365aec3849c99c7eb805916"
 				}
 			]
 		},
 		{
 			"name": "ffnvcodec",
 			"no-autogen": true,
-			"only-arches": [
-				"i386",
-				"x86_64"
-			],
 			"make-install-args": [
 				"PREFIX=/app"
 			],
@@ -57,8 +68,8 @@
 				{
 					"type": "git",
 					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
-					"tag": "n8.1.24.11",
-					"commit": "0cd5c2b7c30d580d09348c92d8facd7a39957f01"
+					"tag": "n8.1.24.13",
+					"commit": "a80f80e2b65fa1e898ccd6464f24d66abb58238b"
 				}
 			]
 		},
@@ -76,30 +87,21 @@
 					"--enable-hwaccel=h264_vaapi",
 					"--enable-hwaccel=hevc_vaapi",
 					"--enable-hwaccel=h264_vdpau",
-					"--enable-hwaccel=hevc_vdpau"
-				],
-				"arch": {
-					"x86_64": {
-						"config-opts": [
-							"--enable-nvdec",
-							"--enable-hwaccel=h264_nvdec",
-							"--enable-hwaccel=hevc_nvdec"
-						]
-					},
-					"i386": {
-						"config-opts": [
-							"--enable-nvdec",
-							"--enable-hwaccel=h264_nvdec",
-							"--enable-hwaccel=hevc_nvdec"
-						]
-					}
-				}
+					"--enable-hwaccel=hevc_vdpau",
+					"--enable-nvdec",
+					"--enable-hwaccel=h264_nvdec",
+					"--enable-hwaccel=hevc_nvdec",
+					"--enable-libdrm",
+					"--enable-decoder=h264_v4l2m2m",
+					"--enable-decoder=hevc_v4l2m2m"
+				]
 			},
 			"sources": [
 				{
-					"type": "archive",
-					"url": "https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.bz2",
-					"sha256": "b620d187c26f76ca19e74210a0336c3b8380b97730df5cdf45f3e69e89000e5c"
+					"type": "git",
+					"url": "https://github.com/cgutman/FFmpeg.git",
+					"//": "branch: moonlight_5_1_0",
+					"commit": "575f20ff4fe85b513786537e18103b28e44b91e6"
 				}
 			]
 		},
@@ -110,7 +112,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
-					"commit": "994312c2120c1e4a7a363d9cb7e941d8c892f7ef"
+					"disable-shallow-clone": true,
+					"commit": "3dcab907526c5440de3cb851dd10e076c7768242"
 				}
 			]
 		}
