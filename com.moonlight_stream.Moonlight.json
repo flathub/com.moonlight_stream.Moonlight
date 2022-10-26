@@ -13,6 +13,7 @@
 		"--socket=pulseaudio",
 		"--device=all",
 		"--talk-name=org.freedesktop.ScreenSaver",
+		"--env=IGNORE_RFI_LATENCY_BUG=1",
 		"--env=QT_QUICK_CONTROLS_STYLE=Material",
 		"--env=LIBVA_DRIVER_NAME="
 	],
@@ -53,7 +54,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"commit": "8db3a33872cfbefcdfb059beea92338a7873f89e"
+					"commit": "30c2dac78718f68d6365aec3849c99c7eb805916"
 				}
 			]
 		},
@@ -112,8 +113,7 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v4.2.1",
-					"commit": "3b8e3b7d5c815b8b6a92690fe656afa8559c8223"
+					"commit": "3dcab907526c5440de3cb851dd10e076c7768242"
 				}
 			]
 		}
