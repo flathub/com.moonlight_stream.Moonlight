@@ -18,6 +18,30 @@
 		"--env=LIBVA_DRIVER_NAME="
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
+	"add-extensions": {
+		"org.freedesktop.Platform.GL": {
+			"directory": "lib/GL",
+			"version": "1.4",
+			"versions": "22.08;22.08-extra;1.4",
+			"subdirectories": true,
+			"no-autodownload": true,
+			"autodelete": false,
+			"add-ld-path": "lib",
+			"merge-dirs": "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d;vulkan/implicit_layer.d",
+			"download-if": "active-gl-driver",
+			"enable-if": "active-gl-driver"
+		},
+		"org.freedesktop.Platform.VAAPI.Intel": {
+			"directory": "lib/dri/intel-vaapi-driver",
+			"version": "22.08",
+			"versions": "22.08",
+			"no-autodownload": true,
+			"autodelete": false,
+			"add-ld-path": "lib",
+			"download-if": "have-intel-gpu",
+			"enable-if": "have-intel-gpu"
+		}
+	},
 	"modules": [
 		{
 			"name": "libdecor",
@@ -107,6 +131,26 @@
 			]
 		},
 		{
+			"name": "libva",
+			"buildsystem": "meson",
+			"build-options": {
+				"config-opts": [
+					"-Ddriverdir=/app/lib/dri:/app/lib/dri/intel-vaapi-driver:/app/lib/GL/lib/dri",
+					"-Dwith_glx=no",
+					"-Dwith_wayland=yes",
+					"-Dwith_x11=yes"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/intel/libva.git",
+					"tag": "2.16.0",
+					"commit": "1333034d7ec6e4f8bcb340d8f7b81b8d32835c49"
+				}
+			]
+		},
+		{
 			"name": "moonlight",
 			"buildsystem": "qmake",
 			"sources": [
@@ -117,6 +161,14 @@
 					"tag": "v4.3.1",
 					"commit": "394f28339ef126e840d3600720d8f5c926803f25"
 				}
+			]
+		},
+		{
+			"name": "platform-bootstrap",
+			"buildsystem": "simple",
+			"build-commands": [
+				"mkdir -p /app/lib/GL",
+				"mkdir -p /app/lib/dri/intel-vaapi-driver"
 			]
 		}
 	]
