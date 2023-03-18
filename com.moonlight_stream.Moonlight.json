@@ -19,46 +19,8 @@
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
-		{
-			"name": "libdecor",
-			"buildsystem": "meson",
-			"build-options": {
-				"config-opts": [
-					"-Ddemo=false"
-				]
-			},
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://gitlab.gnome.org/jadahl/libdecor.git",
-					"commit": "e87dcfdaf83f332fa83b43c804fcf93c151ff0f5"
-				}
-			]
-		},
-		{
-			"name": "SDL2",
-			"build-options": {
-				"config-opts": [
-					"--prefix=/app",
-					"--disable-arts",
-					"--disable-esd",
-					"--disable-nas",
-					"--disable-alsa",
-					"--disable-oss",
-					"--disable-sndio",
-					"--disable-libudev",
-					"--disable-rpath"
-				]
-			},
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-2.26.0",
-					"commit": "0bfeed061b10ea7dd37c88d9bae1824bad760f3a"
-				}
-			]
-		},
+		"shared-modules/SDL2/SDL2-2.26.1-with-libdecor.json",
+
 		{
 			"name": "ffnvcodec",
 			"no-autogen": true,
