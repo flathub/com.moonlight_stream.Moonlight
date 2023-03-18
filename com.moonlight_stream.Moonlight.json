@@ -69,8 +69,8 @@
 				{
 					"type": "git",
 					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
-					"tag": "n8.1.24.13",
-					"commit": "a80f80e2b65fa1e898ccd6464f24d66abb58238b"
+					"tag": "n11.0.10.2",
+					"commit": "27b5db61c9eb4b98d3f565cecf8713b4ecabd990"
 				}
 			]
 		},
@@ -85,13 +85,17 @@
 					"--enable-avcodec",
 					"--enable-decoder=h264",
 					"--enable-decoder=hevc",
+					"--enable-decoder=av1",
 					"--enable-hwaccel=h264_vaapi",
 					"--enable-hwaccel=hevc_vaapi",
+					"--enable-hwaccel=av1_vaapi",
 					"--enable-hwaccel=h264_vdpau",
 					"--enable-hwaccel=hevc_vdpau",
+					"--enable-hwaccel=av1_vdpau",
 					"--enable-nvdec",
 					"--enable-hwaccel=h264_nvdec",
 					"--enable-hwaccel=hevc_nvdec",
+					"--enable-hwaccel=av1_nvdec",
 					"--enable-libdrm",
 					"--enable-decoder=h264_v4l2m2m",
 					"--enable-decoder=hevc_v4l2m2m"
@@ -101,8 +105,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_5_1_0",
-					"commit": "575f20ff4fe85b513786537e18103b28e44b91e6"
+					"//": "branch: moonlight_6_0_0",
+					"commit": "a2f02ffcaeeaa573af6b651761e52ed13692f7ad"
 				}
 			]
 		},
