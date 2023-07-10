@@ -30,8 +30,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://gitlab.gnome.org/jadahl/libdecor.git",
-					"commit": "e87dcfdaf83f332fa83b43c804fcf93c151ff0f5"
+					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
+					"commit": "73260393a97291c887e1074ab7f318e031be0ac6"
 				}
 			]
 		},
