@@ -54,8 +54,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"branch": "SDL2",
-					"commit": "8231278817faabdff4a232770f798684bd2e12df"
+					"//": "branch: SDL2",
+					"commit": "64294e45607c557e125969721e4f55b0867379d3"
 				}
 			]
 		},
@@ -71,6 +71,22 @@
 					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
 					"tag": "n11.0.10.2",
 					"commit": "27b5db61c9eb4b98d3f565cecf8713b4ecabd990"
+				}
+			]
+		},
+		{
+			"name": "dav1d",
+			"buildsystem": "meson",
+			"config-opts": [
+				"-Denable_tools=false",
+				"-Denable_tests=false"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://code.videolan.org/videolan/dav1d.git",
+					"tag": "1.2.1",
+					"commit": "8a6f054ef1e0f7886bc6e53e6be97c427154fe85"
 				}
 			]
 		},
@@ -98,7 +114,9 @@
 					"--enable-hwaccel=av1_nvdec",
 					"--enable-libdrm",
 					"--enable-decoder=h264_v4l2m2m",
-					"--enable-decoder=hevc_v4l2m2m"
+					"--enable-decoder=hevc_v4l2m2m",
+					"--enable-libdav1d",
+					"--enable-decoder=libdav1d"
 				]
 			},
 			"sources": [
