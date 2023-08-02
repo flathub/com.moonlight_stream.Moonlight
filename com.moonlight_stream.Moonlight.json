@@ -116,15 +116,18 @@
 					"--enable-decoder=h264_v4l2m2m",
 					"--enable-decoder=hevc_v4l2m2m",
 					"--enable-libdav1d",
-					"--enable-decoder=libdav1d"
+					"--enable-decoder=libdav1d",
+					"--enable-v4l2-request",
+					"--enable-hwaccel=h264_v4l2request",
+					"--enable-hwaccel=hevc_v4l2request"
 				]
 			},
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_6_0_0",
-					"commit": "a2f02ffcaeeaa573af6b651761e52ed13692f7ad"
+					"//": "branch: moonlight_6_0_0_v4l2",
+					"commit": "7000b5396c723d6d962b08278c36b50984ab13a4"
 				}
 			]
 		},
