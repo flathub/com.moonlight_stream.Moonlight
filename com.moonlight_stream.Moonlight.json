@@ -15,7 +15,10 @@
 		"--talk-name=org.freedesktop.ScreenSaver",
 		"--env=IGNORE_RFI_LATENCY_BUG=1",
 		"--env=QT_QUICK_CONTROLS_STYLE=Material",
-		"--env=LIBVA_DRIVER_NAME="
+		"--env=LIBVA_DRIVER_NAME=",
+		"--unset-env=LIBVA_DRIVER_NAME",
+		"--env=LIBVA_DRIVERS_PATH=",
+		"--unset-env=LIBVA_DRIVERS_PATH"
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
