@@ -49,7 +49,6 @@
 					"--disable-alsa",
 					"--disable-oss",
 					"--disable-sndio",
-					"--disable-libudev",
 					"--disable-rpath"
 				]
 			},
