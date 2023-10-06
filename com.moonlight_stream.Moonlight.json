@@ -34,7 +34,8 @@
 				{
 					"type": "git",
 					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
-					"commit": "73260393a97291c887e1074ab7f318e031be0ac6"
+					"tag": "0.2.0",
+					"commit": "ad320fc0e0ec2cd75a87fed454a9c7d6d1921464"
 				}
 			]
 		},
