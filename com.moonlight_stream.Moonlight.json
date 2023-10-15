@@ -34,7 +34,8 @@
 				{
 					"type": "git",
 					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
-					"commit": "73260393a97291c887e1074ab7f318e031be0ac6"
+					"tag": "0.2.0",
+					"commit": "ad320fc0e0ec2cd75a87fed454a9c7d6d1921464"
 				}
 			]
 		},
@@ -57,7 +58,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "25eca09c7e65a014d3575a95f58b1fdf1d3a5274"
+					"commit": "df6db90dd44984136d3724715fc2451d1b01fd23"
 				}
 			]
 		},
@@ -71,8 +72,8 @@
 				{
 					"type": "git",
 					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
-					"tag": "n11.0.10.2",
-					"commit": "27b5db61c9eb4b98d3f565cecf8713b4ecabd990"
+					"tag": "n11.0.10.3",
+					"commit": "625b3199e94db49e3bb0dc797fc4cffbf7115d81"
 				}
 			]
 		},
@@ -87,8 +88,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.2.1",
-					"commit": "8a6f054ef1e0f7886bc6e53e6be97c427154fe85"
+					"tag": "1.3.0",
+					"commit": "48035599cdd4e4415732e408c407e0c1cd1c7444"
 				}
 			]
 		},
@@ -141,7 +142,7 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"commit": "517b684f856315744fb34aa5411db4e24a4e3837"
+					"commit": "53c2c612c9e06a84b4d8fcac56181a64e1fa8154"
 				}
 			]
 		}
