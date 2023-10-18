@@ -58,7 +58,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "df6db90dd44984136d3724715fc2451d1b01fd23"
+					"commit": "4aab2342e9aabc7e506952dbe5e021f3d3604929"
 				}
 			]
 		},
@@ -130,7 +130,7 @@
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
 					"//": "branch: moonlight_6_0_0_v4l2",
-					"commit": "7000b5396c723d6d962b08278c36b50984ab13a4"
+					"commit": "946f1fc2d7d6816cb79a97137fe7e94ed3e2ca5b"
 				}
 			]
 		},
@@ -142,8 +142,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v4.3.1",
-					"commit": "394f28339ef126e840d3600720d8f5c926803f25"
+					"tag": "v5.0.0",
+					"commit": "413993ab6fc97bbd3650d06ccb1a54a915f58fee"
 				}
 			]
 		}
