@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.15-22.08",
+	"runtime-version": "5.15-23.08",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -142,8 +142,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v5.0.0",
-					"commit": "413993ab6fc97bbd3650d06ccb1a54a915f58fee"
+					"tag": "v5.0.1",
+					"commit": "3cb169ea263c3cf9bb1461af291ab1461244b592"
 				}
 			]
 		}
