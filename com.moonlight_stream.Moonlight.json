@@ -94,11 +94,14 @@
 					"--enable-hwaccel=h264_vdpau",
 					"--enable-hwaccel=hevc_vdpau",
 					"--enable-hwaccel=av1_vdpau",
+					"--enable-libdrm",
+					"--enable-hwaccel=h264_vulkan",
+					"--enable-hwaccel=hevc_vulkan",
+					"--enable-hwaccel=av1_vulkan",
 					"--enable-nvdec",
 					"--enable-hwaccel=h264_nvdec",
 					"--enable-hwaccel=hevc_nvdec",
 					"--enable-hwaccel=av1_nvdec",
-					"--enable-libdrm",
 					"--enable-decoder=h264_v4l2m2m",
 					"--enable-decoder=hevc_v4l2m2m",
 					"--enable-libdav1d",
@@ -112,8 +115,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_6_0_0_v4l2",
-					"commit": "946f1fc2d7d6816cb79a97137fe7e94ed3e2ca5b"
+					"//": "branch: moonlight_6_1_0",
+					"commit": "c49f643b5a4db17b2316552f59f9f6dd4bdc7a41"
 				}
 			]
 		},
