@@ -23,23 +23,6 @@
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
 		{
-			"name": "libdecor",
-			"buildsystem": "meson",
-			"build-options": {
-				"config-opts": [
-					"-Ddemo=false"
-				]
-			},
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
-					"tag": "0.2.0",
-					"commit": "ad320fc0e0ec2cd75a87fed454a9c7d6d1921464"
-				}
-			]
-		},
-		{
 			"name": "SDL2",
 			"build-options": {
 				"config-opts": [
@@ -58,7 +41,11 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "4aab2342e9aabc7e506952dbe5e021f3d3604929"
+					"commit": "4a79fe44fff8459fb516dbd208623b1a6ae791cf"
+				},
+				{
+					"type": "patch",
+					"path": "0001-Revert-Try-SDL_UDEV_deviceclass-to-detect-joysticks-.patch"
 				}
 			]
 		},
@@ -88,8 +75,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.3.0",
-					"commit": "48035599cdd4e4415732e408c407e0c1cd1c7444"
+					"tag": "1.4.1",
+					"commit": "872e470ebf3e65b0b956f3a70329e885a2df1c2a"
 				}
 			]
 		},
@@ -129,8 +116,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_6_0_0_v4l2",
-					"commit": "946f1fc2d7d6816cb79a97137fe7e94ed3e2ca5b"
+					"//": "branch: moonlight_6_1_1",
+					"commit": "03a6142df56a268948515455dd479152de89324c"
 				}
 			]
 		},
