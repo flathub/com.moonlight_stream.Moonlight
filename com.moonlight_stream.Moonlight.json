@@ -41,7 +41,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "4aab2342e9aabc7e506952dbe5e021f3d3604929"
+					"commit": "4a79fe44fff8459fb516dbd208623b1a6ae791cf"
 				}
 			]
 		},
