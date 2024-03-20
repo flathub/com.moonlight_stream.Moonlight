@@ -1,0 +1,166 @@
+From 32e9d9a929ba671f7f8c7fc107d3080cf9e88f4e Mon Sep 17 00:00:00 2001
+From: Cameron Gutman <aicommander@gmail.com>
+Date: Wed, 20 Mar 2024 00:41:41 -0500
+Subject: [PATCH] Revert "Try SDL_UDEV_deviceclass to detect joysticks even if
+ in a container"
+
+This causes a significant regression to start time. See SDL issue #9092.
+
+This reverts commit 3b1e0e163ba3933daa9aa19f06a7bb3909e05c8a.
+---
+ src/core/linux/SDL_udev.c            | 43 +++++++---------------------
+ src/core/linux/SDL_udev.h            |  2 +-
+ src/joystick/linux/SDL_sysjoystick.c | 12 ++++----
+ 3 files changed, 17 insertions(+), 40 deletions(-)
+
+diff --git a/src/core/linux/SDL_udev.c b/src/core/linux/SDL_udev.c
+index 9cb5345ca..5de872b92 100644
+--- a/src/core/linux/SDL_udev.c
++++ b/src/core/linux/SDL_udev.c
+@@ -47,9 +47,6 @@ static _THIS = NULL;
+ static SDL_bool SDL_UDEV_load_sym(const char *fn, void **addr);
+ static int SDL_UDEV_load_syms(void);
+ static SDL_bool SDL_UDEV_hotplug_update_available(void);
+-static void get_caps(struct udev_device *dev, struct udev_device *pdev, const char *attr, unsigned long *bitmask, size_t bitmask_len);
+-static int guess_device_class(struct udev_device *dev);
+-static int device_class(struct udev_device *dev);
+ static void device_event(SDL_UDEV_deviceevent type, struct udev_device *dev);
+ 
+ static SDL_bool SDL_UDEV_load_sym(const char *fn, void **addr)
+@@ -225,7 +222,7 @@ void SDL_UDEV_Scan(void)
+     _this->syms.udev_enumerate_unref(enumerate);
+ }
+ 
+-SDL_bool SDL_UDEV_GetProductInfo(const char *device_path, Uint16 *vendor, Uint16 *product, Uint16 *version, int *class)
++SDL_bool SDL_UDEV_GetProductInfo(const char *device_path, Uint16 *vendor, Uint16 *product, Uint16 *version)
+ {
+     struct udev_enumerate *enumerate = NULL;
+     struct udev_list_entry *devs = NULL;
+@@ -253,7 +250,6 @@ SDL_bool SDL_UDEV_GetProductInfo(const char *device_path, Uint16 *vendor, Uint16
+ 
+             existing_path = _this->syms.udev_device_get_devnode(dev);
+             if (existing_path && SDL_strcmp(device_path, existing_path) == 0) {
+-                int class_temp;
+                 found = SDL_TRUE;
+ 
+                 val = _this->syms.udev_device_get_property_value(dev, "ID_VENDOR_ID");
+@@ -270,11 +266,6 @@ SDL_bool SDL_UDEV_GetProductInfo(const char *device_path, Uint16 *vendor, Uint16
+                 if (val) {
+                     *version = (Uint16)SDL_strtol(val, NULL, 16);
+                 }
+-
+-                class_temp = device_class(dev);
+-                if (class_temp) {
+-                    *class = class_temp;
+-                }
+             }
+             _this->syms.udev_device_unref(dev);
+         }
+@@ -403,17 +394,20 @@ static int guess_device_class(struct udev_device *dev)
+                                       &bitmask_rel[0]);
+ }
+ 
+-static int device_class(struct udev_device *dev)
++static void device_event(SDL_UDEV_deviceevent type, struct udev_device *dev)
+ {
+     const char *subsystem;
+     const char *val = NULL;
+     int devclass = 0;
++    const char *path;
++    SDL_UDEV_CallbackList *item;
+ 
+-    subsystem = _this->syms.udev_device_get_subsystem(dev);
+-    if (!subsystem) {
+-        return 0;
++    path = _this->syms.udev_device_get_devnode(dev);
++    if (!path) {
++        return;
+     }
+ 
++    subsystem = _this->syms.udev_device_get_subsystem(dev);
+     if (SDL_strcmp(subsystem, "sound") == 0) {
+         devclass = SDL_UDEV_DEVICE_SOUND;
+     } else if (SDL_strcmp(subsystem, "input") == 0) {
+@@ -461,33 +455,18 @@ static int device_class(struct udev_device *dev)
+                     devclass = SDL_UDEV_DEVICE_MOUSE;
+                 } else if (SDL_strcmp(val, "kbd") == 0) {
+                     devclass = SDL_UDEV_DEVICE_KEYBOARD;
++                } else {
++                    return;
+                 }
+             } else {
+                 /* We could be linked with libudev on a system that doesn't have udev running */
+                 devclass = guess_device_class(dev);
+             }
+         }
+-    }
+-
+-    return devclass;
+-}
+-
+-static void device_event(SDL_UDEV_deviceevent type, struct udev_device *dev)
+-{
+-    int devclass = 0;
+-    const char *path;
+-    SDL_UDEV_CallbackList *item;
+-
+-    path = _this->syms.udev_device_get_devnode(dev);
+-    if (!path) {
++    } else {
+         return;
+     }
+ 
+-    devclass = device_class(dev);
+-    if (!devclass) {
+-         return;
+-    }
+-
+     /* Process callbacks */
+     for (item = _this->first; item; item = item->next) {
+         item->callback(type, devclass, path);
+diff --git a/src/core/linux/SDL_udev.h b/src/core/linux/SDL_udev.h
+index 1489a852b..9917fd28f 100644
+--- a/src/core/linux/SDL_udev.h
++++ b/src/core/linux/SDL_udev.h
+@@ -103,7 +103,7 @@ extern void SDL_UDEV_UnloadLibrary(void);
+ extern int SDL_UDEV_LoadLibrary(void);
+ extern void SDL_UDEV_Poll(void);
+ extern void SDL_UDEV_Scan(void);
+-extern SDL_bool SDL_UDEV_GetProductInfo(const char *device_path, Uint16 *vendor, Uint16 *product, Uint16 *version, int *class);
++extern SDL_bool SDL_UDEV_GetProductInfo(const char *device_path, Uint16 *vendor, Uint16 *product, Uint16 *version);
+ extern int SDL_UDEV_AddCallback(SDL_UDEV_Callback cb);
+ extern void SDL_UDEV_DelCallback(SDL_UDEV_Callback cb);
+ extern const SDL_UDEV_Symbols *SDL_UDEV_GetUdevSyms(void);
+diff --git a/src/joystick/linux/SDL_sysjoystick.c b/src/joystick/linux/SDL_sysjoystick.c
+index 39ddb75af..8b376ec8a 100644
+--- a/src/joystick/linux/SDL_sysjoystick.c
++++ b/src/joystick/linux/SDL_sysjoystick.c
+@@ -278,20 +278,18 @@ static int IsJoystick(const char *path, int fd, char **name_return, Uint16 *vend
+     struct input_id inpid;
+     char *name;
+     char product_string[128];
+-    int class = 0;
+ 
+-    SDL_zero(inpid);
++    if (ioctl(fd, JSIOCGNAME(sizeof(product_string)), product_string) >= 0) {
++        SDL_zero(inpid);
+ #ifdef SDL_USE_LIBUDEV
+-    SDL_UDEV_GetProductInfo(path, &inpid.vendor, &inpid.product, &inpid.version, &class);
++        SDL_UDEV_GetProductInfo(path, &inpid.vendor, &inpid.product, &inpid.version);
+ #endif
+-    if (ioctl(fd, JSIOCGNAME(sizeof(product_string)), product_string) <= 0) {
++    } else {
+         /* When udev is enabled we only get joystick devices here, so there's no need to test them */
+-        if (enumeration_method != ENUMERATION_LIBUDEV &&
+-            !(class & SDL_UDEV_DEVICE_JOYSTICK) && ( class || !GuessIsJoystick(fd))) {
++        if (enumeration_method != ENUMERATION_LIBUDEV && !GuessIsJoystick(fd)) {
+             return 0;
+         }
+ 
+-        /* Could have vendor and product already from udev, but should agree with evdev */
+         if (ioctl(fd, EVIOCGID, &inpid) < 0) {
+             return 0;
+         }
+-- 
+2.44.0
+
