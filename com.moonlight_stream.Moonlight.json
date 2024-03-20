@@ -23,6 +23,23 @@
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
 		{
+			"name": "libdecor",
+			"buildsystem": "meson",
+			"build-options": {
+				"config-opts": [
+					"-Ddemo=false"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
+					"tag": "0.2.2",
+					"commit": "7807ae3480f5c6a37c5e8505d94af1e764aaf704"
+				}
+			]
+		},
+		{
 			"name": "SDL2",
 			"build-options": {
 				"config-opts": [
