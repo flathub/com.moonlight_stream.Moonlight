@@ -71,8 +71,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.3.0",
-					"commit": "48035599cdd4e4415732e408c407e0c1cd1c7444"
+					"tag": "1.4.1",
+					"commit": "872e470ebf3e65b0b956f3a70329e885a2df1c2a"
 				}
 			]
 		},
