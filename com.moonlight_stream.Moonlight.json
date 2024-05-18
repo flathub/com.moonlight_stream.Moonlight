@@ -19,7 +19,9 @@
 		"--env=LIBVA_DRIVER_NAME=",
 		"--unset-env=LIBVA_DRIVER_NAME",
 		"--env=LIBVA_DRIVERS_PATH=",
-		"--unset-env=LIBVA_DRIVERS_PATH"
+		"--unset-env=LIBVA_DRIVERS_PATH",
+		"--filesystem=xdg-run/gamescope-0",
+		"--filesystem=host-os:ro"
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
@@ -211,6 +213,20 @@
 					"url": "https://github.com/cgutman/FFmpeg.git",
 					"//": "branch: moonlight_7_0_0",
 					"commit": "24ef927fdfe145c2d69df8f02591d92ba431fafd"
+				}
+			]
+		},
+		{
+			"name": "gamescope-wsi",
+			"buildsystem": "simple",
+			"build-commands": [
+				"install -Dm755 VkLayer_FROG_gamescope_wsi.x86_64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.x86_64.json"
+			],
+			"only-arches": [ "x86_64" ],
+			"sources": [
+				{
+					"type": "file",
+					"path": "VkLayer_FROG_gamescope_wsi.x86_64.json"
 				}
 			]
 		},
