@@ -170,8 +170,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.4.1",
-					"commit": "872e470ebf3e65b0b956f3a70329e885a2df1c2a"
+					"tag": "1.4.2",
+					"commit": "805d9e5a8ffce3ef78cebde4bfedf3642907b2d3"
 				}
 			]
 		},
@@ -211,8 +211,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_7_0_0",
-					"commit": "24ef927fdfe145c2d69df8f02591d92ba431fafd"
+					"//": "branch: moonlight_7_0_1",
+					"commit": "cc74a15e6ddb732faefdeda23c5306592aa65503"
 				}
 			]
 		},
