@@ -238,12 +238,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v5.0.1",
-					"commit": "3cb169ea263c3cf9bb1461af291ab1461244b592"
-				},
-				{
-					"type": "patch",
-					"path": "0001-Don-t-set-relative-warp-mode-based-on-absolute-relat.patch"
+					"tag": "v6.0.0",
+					"commit": "e7a2d9f44d7b43fe7f6d2e0f08bf55b7cca48818"
 				}
 			]
 		}
