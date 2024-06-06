@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.15-23.08",
+	"runtime-version": "6.7",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -19,10 +19,91 @@
 		"--env=LIBVA_DRIVER_NAME=",
 		"--unset-env=LIBVA_DRIVER_NAME",
 		"--env=LIBVA_DRIVERS_PATH=",
-		"--unset-env=LIBVA_DRIVERS_PATH"
+		"--unset-env=LIBVA_DRIVERS_PATH",
+		"--filesystem=xdg-run/gamescope-0",
+		"--filesystem=host-os:ro"
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
+		{
+			"name": "libplacebo",
+			"buildsystem": "meson",
+			"build-options": {
+				"config-opts": [
+					"-Ddemos=false",
+					"-Dvulkan=enabled",
+					"-Dopengl=disabled",
+					"-Dshaderc=enabled"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/haasn/libplacebo.git",
+					"commit": "7b29435072143ee8b7e131947e055d3780ae4e47"
+				},
+				{
+					"type": "patch",
+					"path": "0001-Vulkan-Don-t-try-to-reuse-old-swapchain.patch"
+				}
+			],
+			"cleanup": [
+				"/include",
+				"/lib/pkgconfig"
+			],
+			"modules": [
+				{
+					"name": "shaderc",
+					"buildsystem": "cmake-ninja",
+					"build-options": {
+						"config-opts": [
+							"-DSHADERC_SKIP_COPYRIGHT_CHECK=ON",
+							"-DSHADERC_SKIP_EXAMPLES=ON",
+							"-DSHADERC_SKIP_TESTS=ON",
+							"-DSPIRV_SKIP_EXECUTABLES=ON",
+							"-DENABLE_GLSLANG_BINARIES=OFF",
+							"-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+						]
+					},
+					"cleanup": [
+						"/bin",
+						"/include",
+						"/lib/cmake",
+						"/lib/*.a",
+						"/lib/pkgconfig"
+					],
+					"sources": [
+						{
+							"type": "git",
+							"url": "https://github.com/google/shaderc.git",
+							"tag": "v2024.1",
+							"commit": "47a9387ef5b3600d30d84c71ec77a59dc7db46fa"
+						},
+						{
+							"type": "git",
+							"url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
+							"tag": "v2024.1",
+							"commit": "04896c462d9f3f504c99a4698605b6524af813c1",
+							"dest": "third_party/spirv-tools"
+						},
+						{
+							"type": "git",
+							"url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+							"tag": "vulkan-sdk-1.3.283.0",
+							"commit": "4f7b471f1a66b6d06462cd4ba57628cc0cd087d7",
+							"dest": "third_party/spirv-headers"
+						},
+						{
+							"type": "git",
+							"url": "https://github.com/KhronosGroup/glslang.git",
+							"tag": "14.2.0",
+							"commit": "e8dd0b6903b34f1879520b444634c75ea2deedf5",
+							"dest": "third_party/glslang"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "libdecor",
 			"buildsystem": "meson",
@@ -89,8 +170,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.4.1",
-					"commit": "872e470ebf3e65b0b956f3a70329e885a2df1c2a"
+					"tag": "1.4.2",
+					"commit": "805d9e5a8ffce3ef78cebde4bfedf3642907b2d3"
 				}
 			]
 		},
@@ -130,8 +211,22 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_7_0_0",
-					"commit": "24ef927fdfe145c2d69df8f02591d92ba431fafd"
+					"//": "branch: moonlight_7_0_1",
+					"commit": "cc74a15e6ddb732faefdeda23c5306592aa65503"
+				}
+			]
+		},
+		{
+			"name": "gamescope-wsi",
+			"buildsystem": "simple",
+			"build-commands": [
+				"install -Dm755 VkLayer_FROG_gamescope_wsi.x86_64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.x86_64.json"
+			],
+			"only-arches": [ "x86_64" ],
+			"sources": [
+				{
+					"type": "file",
+					"path": "VkLayer_FROG_gamescope_wsi.x86_64.json"
 				}
 			]
 		},
@@ -143,12 +238,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v5.0.1",
-					"commit": "3cb169ea263c3cf9bb1461af291ab1461244b592"
-				},
-				{
-					"type": "patch",
-					"path": "0001-Don-t-set-relative-warp-mode-based-on-absolute-relat.patch"
+					"tag": "v6.0.0",
+					"commit": "e7a2d9f44d7b43fe7f6d2e0f08bf55b7cca48818"
 				}
 			]
 		}
