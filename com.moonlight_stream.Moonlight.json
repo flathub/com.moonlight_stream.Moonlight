@@ -140,7 +140,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "75340b827de1799a94ee1f41e20022865d452dd8"
+					"commit": "a0ec7c0906dfa9b0651fcaea52c12c1acb936562"
 				}
 			]
 		},
@@ -170,8 +170,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.4.2",
-					"commit": "805d9e5a8ffce3ef78cebde4bfedf3642907b2d3"
+					"tag": "1.4.3",
+					"commit": "e9986de7f4264940af6fa1df1498fd2754077de4"
 				}
 			]
 		},
@@ -238,8 +238,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v6.0.0",
-					"commit": "e7a2d9f44d7b43fe7f6d2e0f08bf55b7cca48818"
+					"tag": "v6.0.1",
+					"commit": "17a25484805ef927ad7c1b2906f885ee26eda928"
 				}
 			]
 		}
