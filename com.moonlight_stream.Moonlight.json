@@ -133,7 +133,8 @@
 					"--disable-alsa",
 					"--disable-oss",
 					"--disable-sndio",
-					"--disable-rpath"
+					"--disable-rpath",
+					"--disable-shared"
 				]
 			},
 			"sources": [
