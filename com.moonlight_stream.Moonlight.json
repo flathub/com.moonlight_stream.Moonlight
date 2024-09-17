@@ -186,6 +186,8 @@
 					"--disable-shared",
 					"--disable-all",
 					"--enable-avcodec",
+					"--enable-avformat",
+					"--enable-swscale",
 					"--enable-decoder=h264",
 					"--enable-decoder=hevc",
 					"--enable-decoder=av1",
