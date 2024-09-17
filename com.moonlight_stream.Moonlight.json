@@ -240,8 +240,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v6.0.1",
-					"commit": "17a25484805ef927ad7c1b2906f885ee26eda928"
+					"tag": "v6.1.0",
+					"commit": "f786e94c7b2f943e24e65d7d74deb539b827fc84"
 				}
 			]
 		}
