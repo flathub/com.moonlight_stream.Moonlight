@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "6.7",
+	"runtime-version": "6.8",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -13,7 +13,6 @@
 		"--socket=pulseaudio",
 		"--device=all",
 		"--talk-name=org.freedesktop.ScreenSaver",
-		"--env=SDL_VIDEO_WAYLAND_EMULATE_MOUSE_WARP=0",
 		"--env=IGNORE_RFI_LATENCY_BUG=1",
 		"--env=QT_QUICK_CONTROLS_STYLE=Material",
 		"--env=LIBVA_DRIVER_NAME=",
@@ -51,58 +50,6 @@
 			"cleanup": [
 				"/include",
 				"/lib/pkgconfig"
-			],
-			"modules": [
-				{
-					"name": "shaderc",
-					"buildsystem": "cmake-ninja",
-					"build-options": {
-						"config-opts": [
-							"-DSHADERC_SKIP_COPYRIGHT_CHECK=ON",
-							"-DSHADERC_SKIP_EXAMPLES=ON",
-							"-DSHADERC_SKIP_TESTS=ON",
-							"-DSPIRV_SKIP_EXECUTABLES=ON",
-							"-DENABLE_GLSLANG_BINARIES=OFF",
-							"-DCMAKE_BUILD_TYPE=RelWithDebInfo"
-						]
-					},
-					"cleanup": [
-						"/bin",
-						"/include",
-						"/lib/cmake",
-						"/lib/*.a",
-						"/lib/pkgconfig"
-					],
-					"sources": [
-						{
-							"type": "git",
-							"url": "https://github.com/google/shaderc.git",
-							"tag": "v2024.1",
-							"commit": "47a9387ef5b3600d30d84c71ec77a59dc7db46fa"
-						},
-						{
-							"type": "git",
-							"url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
-							"tag": "v2024.1",
-							"commit": "04896c462d9f3f504c99a4698605b6524af813c1",
-							"dest": "third_party/spirv-tools"
-						},
-						{
-							"type": "git",
-							"url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
-							"tag": "vulkan-sdk-1.3.283.0",
-							"commit": "4f7b471f1a66b6d06462cd4ba57628cc0cd087d7",
-							"dest": "third_party/spirv-headers"
-						},
-						{
-							"type": "git",
-							"url": "https://github.com/KhronosGroup/glslang.git",
-							"tag": "14.2.0",
-							"commit": "e8dd0b6903b34f1879520b444634c75ea2deedf5",
-							"dest": "third_party/glslang"
-						}
-					]
-				}
 			]
 		},
 		{
@@ -142,7 +89,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "1b26b54402eaa0a4fab4fcc799dcfa80d539fe8b"
+					"commit": "86fd4ed83cdcf71fef6a57766b126e88f923acd3"
 				}
 			]
 		},
@@ -172,8 +119,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.4.3",
-					"commit": "e9986de7f4264940af6fa1df1498fd2754077de4"
+					"tag": "1.5.0",
+					"commit": "32cf02af50f32af108a3b281c452788dccdac648"
 				}
 			]
 		},
@@ -181,6 +128,7 @@
 			"name": "ffmpeg",
 			"build-options": {
 				"config-opts": [
+					"--fatal-warnings",
 					"--enable-pic",
 					"--enable-static",
 					"--disable-shared",
@@ -202,6 +150,9 @@
 					"--enable-hwaccel=hevc_nvdec",
 					"--enable-hwaccel=av1_nvdec",
 					"--enable-libdrm",
+					"--enable-hwaccel=h264_vulkan",
+					"--enable-hwaccel=hevc_vulkan",
+					"--enable-hwaccel=av1_vulkan",
 					"--enable-decoder=h264_v4l2m2m",
 					"--enable-decoder=hevc_v4l2m2m",
 					"--enable-libdav1d",
@@ -215,8 +166,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_7_0_2",
-					"commit": "f030aa9918aa07b4bd12a69ab6a6c49f9432c24d"
+					"//": "branch: moonlight_7_1_0_r2",
+					"commit": "5306431aa27be35ab08b83fc678f74f091b8bba7"
 				}
 			]
 		},
