@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.15-23.08",
+	"runtime-version": "6.7",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -13,15 +13,98 @@
 		"--socket=pulseaudio",
 		"--device=all",
 		"--talk-name=org.freedesktop.ScreenSaver",
+		"--env=SDL_VIDEO_WAYLAND_EMULATE_MOUSE_WARP=0",
 		"--env=IGNORE_RFI_LATENCY_BUG=1",
 		"--env=QT_QUICK_CONTROLS_STYLE=Material",
 		"--env=LIBVA_DRIVER_NAME=",
 		"--unset-env=LIBVA_DRIVER_NAME",
 		"--env=LIBVA_DRIVERS_PATH=",
-		"--unset-env=LIBVA_DRIVERS_PATH"
+		"--unset-env=LIBVA_DRIVERS_PATH",
+		"--filesystem=xdg-run/gamescope-0",
+		"--filesystem=host-os:ro"
 	],
 	"cleanup": [ "/include", "*.a", "/share/ffmpeg" ],
 	"modules": [
+		{
+			"name": "libplacebo",
+			"buildsystem": "meson",
+			"build-options": {
+				"config-opts": [
+					"-Ddemos=false",
+					"-Dvulkan=enabled",
+					"-Dopengl=disabled",
+					"-Dshaderc=enabled"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/haasn/libplacebo.git",
+					"tag": "v7.349.0",
+					"commit": "1fd3c7bde7b943fe8985c893310b5269a09b46c5"
+				},
+				{
+					"type": "patch",
+					"path": "0001-Vulkan-Don-t-try-to-reuse-old-swapchain.patch"
+				}
+			],
+			"cleanup": [
+				"/include",
+				"/lib/pkgconfig"
+			],
+			"modules": [
+				{
+					"name": "shaderc",
+					"buildsystem": "cmake-ninja",
+					"build-options": {
+						"config-opts": [
+							"-DSHADERC_SKIP_COPYRIGHT_CHECK=ON",
+							"-DSHADERC_SKIP_EXAMPLES=ON",
+							"-DSHADERC_SKIP_TESTS=ON",
+							"-DSPIRV_SKIP_EXECUTABLES=ON",
+							"-DENABLE_GLSLANG_BINARIES=OFF",
+							"-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+						]
+					},
+					"cleanup": [
+						"/bin",
+						"/include",
+						"/lib/cmake",
+						"/lib/*.a",
+						"/lib/pkgconfig"
+					],
+					"sources": [
+						{
+							"type": "git",
+							"url": "https://github.com/google/shaderc.git",
+							"tag": "v2024.1",
+							"commit": "47a9387ef5b3600d30d84c71ec77a59dc7db46fa"
+						},
+						{
+							"type": "git",
+							"url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
+							"tag": "v2024.1",
+							"commit": "04896c462d9f3f504c99a4698605b6524af813c1",
+							"dest": "third_party/spirv-tools"
+						},
+						{
+							"type": "git",
+							"url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+							"tag": "vulkan-sdk-1.3.283.0",
+							"commit": "4f7b471f1a66b6d06462cd4ba57628cc0cd087d7",
+							"dest": "third_party/spirv-headers"
+						},
+						{
+							"type": "git",
+							"url": "https://github.com/KhronosGroup/glslang.git",
+							"tag": "14.2.0",
+							"commit": "e8dd0b6903b34f1879520b444634c75ea2deedf5",
+							"dest": "third_party/glslang"
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "libdecor",
 			"buildsystem": "meson",
@@ -34,8 +117,8 @@
 				{
 					"type": "git",
 					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
-					"tag": "0.2.0",
-					"commit": "ad320fc0e0ec2cd75a87fed454a9c7d6d1921464"
+					"tag": "0.2.2",
+					"commit": "7807ae3480f5c6a37c5e8505d94af1e764aaf704"
 				}
 			]
 		},
@@ -50,7 +133,8 @@
 					"--disable-alsa",
 					"--disable-oss",
 					"--disable-sndio",
-					"--disable-rpath"
+					"--disable-rpath",
+					"--disable-shared"
 				]
 			},
 			"sources": [
@@ -58,7 +142,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "4aab2342e9aabc7e506952dbe5e021f3d3604929"
+					"commit": "1b26b54402eaa0a4fab4fcc799dcfa80d539fe8b"
 				}
 			]
 		},
@@ -88,8 +172,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.3.0",
-					"commit": "48035599cdd4e4415732e408c407e0c1cd1c7444"
+					"tag": "1.4.3",
+					"commit": "e9986de7f4264940af6fa1df1498fd2754077de4"
 				}
 			]
 		},
@@ -102,6 +186,8 @@
 					"--disable-shared",
 					"--disable-all",
 					"--enable-avcodec",
+					"--enable-avformat",
+					"--enable-swscale",
 					"--enable-decoder=h264",
 					"--enable-decoder=hevc",
 					"--enable-decoder=av1",
@@ -129,8 +215,22 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_6_0_0_v4l2",
-					"commit": "946f1fc2d7d6816cb79a97137fe7e94ed3e2ca5b"
+					"//": "branch: moonlight_7_0_2",
+					"commit": "f030aa9918aa07b4bd12a69ab6a6c49f9432c24d"
+				}
+			]
+		},
+		{
+			"name": "gamescope-wsi",
+			"buildsystem": "simple",
+			"build-commands": [
+				"install -Dm755 VkLayer_FROG_gamescope_wsi.x86_64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.x86_64.json"
+			],
+			"only-arches": [ "x86_64" ],
+			"sources": [
+				{
+					"type": "file",
+					"path": "VkLayer_FROG_gamescope_wsi.x86_64.json"
 				}
 			]
 		},
@@ -142,8 +242,8 @@
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v5.0.1",
-					"commit": "3cb169ea263c3cf9bb1461af291ab1461244b592"
+					"tag": "v6.1.0",
+					"commit": "f786e94c7b2f943e24e65d7d74deb539b827fc84"
 				}
 			]
 		}
