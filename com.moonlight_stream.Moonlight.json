@@ -188,6 +188,11 @@
 		{
 			"name": "moonlight",
 			"buildsystem": "qmake",
+			"build-options": {
+				"config-opts": [
+					"QMAKE_RPATHDIR=/app/lib"
+				]
+			},
 			"sources": [
 				{
 					"type": "git",
