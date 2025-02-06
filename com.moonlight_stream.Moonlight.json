@@ -81,7 +81,7 @@
 					"--disable-oss",
 					"--disable-sndio",
 					"--disable-rpath",
-					"--disable-shared"
+					"--disable-static"
 				]
 			},
 			"sources": [
@@ -129,9 +129,10 @@
 			"build-options": {
 				"config-opts": [
 					"--fatal-warnings",
+					"--disable-stripping",
 					"--enable-pic",
-					"--enable-static",
-					"--disable-shared",
+					"--enable-shared",
+					"--disable-static",
 					"--disable-all",
 					"--enable-avcodec",
 					"--enable-avformat",
