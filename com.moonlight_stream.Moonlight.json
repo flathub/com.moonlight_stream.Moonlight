@@ -81,7 +81,7 @@
 					"--disable-oss",
 					"--disable-sndio",
 					"--disable-rpath",
-					"--disable-shared"
+					"--disable-static"
 				]
 			},
 			"sources": [
@@ -89,7 +89,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "96b4535cc7c182d12648e6f423a2e24c4a4d4614"
+					"commit": "ed7e7edb70d15a06387446dd9cbc623ecb41b5d6"
 				}
 			]
 		},
@@ -119,8 +119,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.5.0",
-					"commit": "32cf02af50f32af108a3b281c452788dccdac648"
+					"tag": "1.5.1",
+					"commit": "42b2b24fb8819f1ed3643aa9cf2a62f03868e3aa"
 				}
 			]
 		},
@@ -129,9 +129,10 @@
 			"build-options": {
 				"config-opts": [
 					"--fatal-warnings",
+					"--disable-stripping",
 					"--enable-pic",
-					"--enable-static",
-					"--disable-shared",
+					"--enable-shared",
+					"--disable-static",
 					"--disable-all",
 					"--enable-avcodec",
 					"--enable-avformat",
@@ -188,6 +189,11 @@
 		{
 			"name": "moonlight",
 			"buildsystem": "qmake",
+			"build-options": {
+				"config-opts": [
+					"QMAKE_RPATHDIR=/app/lib"
+				]
+			},
 			"sources": [
 				{
 					"type": "git",
