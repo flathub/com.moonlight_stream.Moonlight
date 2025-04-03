@@ -82,7 +82,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"commit": "b0d2a4f35528bd08e0a0cb5f7840ff38f3b1f684"
+					"commit": "87d6beb89539b03ea08255adb410a809ca5b41e9"
 				}
 			]
 		},
@@ -98,11 +98,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"commit": "fc273d65b167e88626d753aafe1e21be6c728974"
+					"commit": "234c66af7364d2a5858905511428501612c50424"
 				}
-			],
-			"post-install": [
-				"mv /app/lib/pkgconfig/sdl2_compat.pc /app/lib/pkgconfig/sdl2.pc"
 			]
 		},
 		{
