@@ -39,8 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"tag": "v7.349.0",
-					"commit": "1fd3c7bde7b943fe8985c893310b5269a09b46c5"
+					"commit": "63a3d64ac32eaaa56aa60b5000d43c02544c6508"
 				},
 				{
 					"type": "patch",
@@ -89,7 +88,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "ed7e7edb70d15a06387446dd9cbc623ecb41b5d6"
+					"commit": "235e4870af091ea7e3814ee2dbdb8e2ec627aaf0"
 				}
 			]
 		},
@@ -167,8 +166,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_7_1_0_r2",
-					"commit": "5306431aa27be35ab08b83fc678f74f091b8bba7"
+					"//": "branch: moonlight_8.0_r1",
+					"commit": "e34198c54ed5c167aebb899b294d05a3488b3441"
 				}
 			]
 		},
