@@ -93,21 +93,6 @@
 			]
 		},
 		{
-			"name": "ffnvcodec",
-			"no-autogen": true,
-			"make-install-args": [
-				"PREFIX=/app"
-			],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://git.videolan.org/git/ffmpeg/nv-codec-headers.git",
-					"tag": "n11.0.10.3",
-					"commit": "625b3199e94db49e3bb0dc797fc4cffbf7115d81"
-				}
-			]
-		},
-		{
 			"name": "dav1d",
 			"buildsystem": "meson",
 			"config-opts": [
@@ -145,10 +130,6 @@
 					"--enable-hwaccel=h264_vdpau",
 					"--enable-hwaccel=hevc_vdpau",
 					"--enable-hwaccel=av1_vdpau",
-					"--enable-nvdec",
-					"--enable-hwaccel=h264_nvdec",
-					"--enable-hwaccel=hevc_nvdec",
-					"--enable-hwaccel=av1_nvdec",
 					"--enable-libdrm",
 					"--enable-hwaccel=h264_vulkan",
 					"--enable-hwaccel=hevc_vulkan",
@@ -188,10 +169,17 @@
 		{
 			"name": "moonlight",
 			"buildsystem": "qmake",
+			"config-opts": [
+				"QMAKE_RPATHDIR=/app/lib"
+			],
 			"build-options": {
-				"config-opts": [
-					"QMAKE_RPATHDIR=/app/lib"
-				]
+				"arch": {
+					"x86_64": {
+						"config-opts": [
+							"CONFIG+=disable-libdrm"
+						]
+					}
+				}
 			},
 			"sources": [
 				{
