@@ -188,10 +188,17 @@
 		{
 			"name": "moonlight",
 			"buildsystem": "qmake",
+			"config-opts": [
+				"QMAKE_RPATHDIR=/app/lib"
+			],
 			"build-options": {
-				"config-opts": [
-					"QMAKE_RPATHDIR=/app/lib"
-				]
+				"arch": {
+					"x86_64": {
+						"config-opts": [
+							"CONFIG+=disable-libdrm"
+						]
+					}
+				}
 			},
 			"sources": [
 				{
