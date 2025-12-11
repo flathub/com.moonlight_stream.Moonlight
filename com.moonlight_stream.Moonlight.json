@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "6.8",
+	"runtime-version": "6.10",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -93,6 +93,22 @@
 			]
 		},
 		{
+			"name": "SDL2_ttf",
+			"build-options": {
+				"config-opts": [
+					"--disable-rpath",
+					"--disable-static"
+				]
+			},
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.22.0/SDL2_ttf-2.22.0.tar.gz",
+					"sha256": "d48cbd1ce475b9e178206bf3b72d56b66d84d44f64ac05803328396234d67723"
+				}
+			]
+		},
+		{
 			"name": "dav1d",
 			"buildsystem": "meson",
 			"config-opts": [
@@ -173,6 +189,9 @@
 				"QMAKE_RPATHDIR=/app/lib"
 			],
 			"build-options": {
+				"config-opts": [
+					"CONFIG+=disable-cuda"
+				],
 				"arch": {
 					"x86_64": {
 						"config-opts": [
@@ -188,6 +207,18 @@
 					"disable-shallow-clone": true,
 					"tag": "v6.1.0",
 					"commit": "f786e94c7b2f943e24e65d7d74deb539b827fc84"
+				},
+				{
+					"type": "patch",
+					"path": "0001-Fix-null-window-on-Qt-6.9.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0002-Fix-tooltip-layout-with-Qt-6.9.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0003-Fix-incorrect-toolbar-color-on-Qt-6.9.patch"
 				}
 			]
 		}
