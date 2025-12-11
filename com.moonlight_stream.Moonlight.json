@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "6.8",
+	"runtime-version": "6.10",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -39,7 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"commit": "63a3d64ac32eaaa56aa60b5000d43c02544c6508"
+					"commit": "45f76a46aaf2958febff2a482a059151b480bf99"
 				},
 				{
 					"type": "patch",
@@ -88,7 +88,23 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: SDL2",
-					"commit": "235e4870af091ea7e3814ee2dbdb8e2ec627aaf0"
+					"commit": "bacfd3c2528ea4515c3f508e8a16679e7e890e19"
+				}
+			]
+		},
+		{
+			"name": "SDL2_ttf",
+			"build-options": {
+				"config-opts": [
+					"--disable-rpath",
+					"--disable-static"
+				]
+			},
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.22.0/SDL2_ttf-2.22.0.tar.gz",
+					"sha256": "d48cbd1ce475b9e178206bf3b72d56b66d84d44f64ac05803328396234d67723"
 				}
 			]
 		},
@@ -103,8 +119,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.5.1",
-					"commit": "42b2b24fb8819f1ed3643aa9cf2a62f03868e3aa"
+					"tag": "1.5.2",
+					"commit": "c720f4d3556a01916324aea155555d3efba842e8"
 				}
 			]
 		},
@@ -173,6 +189,9 @@
 				"QMAKE_RPATHDIR=/app/lib"
 			],
 			"build-options": {
+				"config-opts": [
+					"CONFIG+=disable-cuda"
+				],
 				"arch": {
 					"x86_64": {
 						"config-opts": [
@@ -188,6 +207,18 @@
 					"disable-shallow-clone": true,
 					"tag": "v6.1.0",
 					"commit": "f786e94c7b2f943e24e65d7d74deb539b827fc84"
+				},
+				{
+					"type": "patch",
+					"path": "0001-Fix-null-window-on-Qt-6.9.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0002-Fix-tooltip-layout-with-Qt-6.9.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0003-Fix-incorrect-toolbar-color-on-Qt-6.9.patch"
 				}
 			]
 		}
