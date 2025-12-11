@@ -39,7 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"commit": "63a3d64ac32eaaa56aa60b5000d43c02544c6508"
+					"commit": "45f76a46aaf2958febff2a482a059151b480bf99"
 				},
 				{
 					"type": "patch",
