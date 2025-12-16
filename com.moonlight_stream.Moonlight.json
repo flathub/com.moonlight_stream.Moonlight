@@ -163,8 +163,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_8.0_r1",
-					"commit": "e34198c54ed5c167aebb899b294d05a3488b3441"
+					"//": "branch: moonlight_8.0.1_r1",
+					"commit": "73eeb5022dd9c68e798a5668948c8b51f574938f"
 				}
 			]
 		},
