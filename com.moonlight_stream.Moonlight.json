@@ -69,26 +69,42 @@
 			]
 		},
 		{
-			"name": "SDL2",
+			"name": "SDL3",
+			"buildsystem": "cmake-ninja",
+			"builddir": true,
 			"build-options": {
 				"config-opts": [
-					"--prefix=/app",
-					"--disable-arts",
-					"--disable-esd",
-					"--disable-nas",
-					"--disable-alsa",
-					"--disable-oss",
-					"--disable-sndio",
-					"--disable-rpath",
-					"--disable-static"
+					"-DSDL_ALSA=OFF",
+					"-DSDL_RPATH=OFF",
+					"-DSDL_KMSDRM=OFF",
+					"-DSDL_INSTALL_DOCS=OFF",
+					"-DSDL_TEST_LIBRARY=OFF"
 				]
 			},
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"//": "branch: SDL2",
-					"commit": "bacfd3c2528ea4515c3f508e8a16679e7e890e19"
+					"tag": "release-3.4.0",
+					"commit": "a962f40bbba175e9716557a25d5d7965f134a3d3"
+				}
+			]
+		},
+		{
+			"name": "SDL2-compat",
+			"buildsystem": "cmake-ninja",
+			"builddir": true,
+			"build-options": {
+				"config-opts": [
+					"-DSDL2COMPAT_TESTS=OFF"
+				]
+			},
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/libsdl-org/sdl2-compat.git",
+					"tag": "release-2.32.62",
+					"commit": "0846ba29413339352e2384b9a56ea04130039a18"
 				}
 			]
 		},
