@@ -86,7 +86,7 @@
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
 					"//": "branch: release-3.4.x",
-					"commit": "3ec7fc8f59b0edb0a31404b579d77583cecabce4"
+					"commit": "b73ab6cc822c071296be33e9edef3e75354a37a1"
 				}
 			]
 		},
@@ -103,7 +103,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"commit": "bf12808fa107d7a0aa5b9343ddefbf6acc8629d7"
+					"commit": "1c8ece4de9db96d01f99296c26a87a4cabb72f54"
 				}
 			]
 		},
