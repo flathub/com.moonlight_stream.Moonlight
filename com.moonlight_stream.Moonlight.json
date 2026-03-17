@@ -39,8 +39,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"tag": "v7.360.0",
-					"commit": "b2ea27dceb6418aabfe9121174c6dbb232942998"
+					"tag": "v7.360.1",
+					"commit": "cee9b076f2c63104ccfd497fa79c39a867293ec4"
 				}
 			],
 			"cleanup": [
@@ -169,15 +169,16 @@
 					"--enable-decoder=libdav1d",
 					"--enable-v4l2-request",
 					"--enable-hwaccel=h264_v4l2request",
-					"--enable-hwaccel=hevc_v4l2request"
+					"--enable-hwaccel=hevc_v4l2request",
+					"--enable-hwaccel=av1_v4l2request"
 				]
 			},
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_8.0.1_r1",
-					"commit": "73eeb5022dd9c68e798a5668948c8b51f574938f"
+					"//": "branch: moonlight_8.1_r1",
+					"commit": "598b70dece4055bdba62e5c64ff9caaa9f42f3ec"
 				}
 			]
 		},
