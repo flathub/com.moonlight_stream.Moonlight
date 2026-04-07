@@ -82,8 +82,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-3.4.2",
-					"commit": "683181b47cfabd293e3ea409f838915b8297a4fd"
+					"tag": "release-3.4.4",
+					"commit": "5848e584a1b606de26e3dbd1c7e4ecbc34f807a6"
 				}
 			]
 		},
@@ -100,8 +100,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"tag": "release-2.32.64",
-					"commit": "3e1eaa5920e0426b8131870a9259f23e75d429d9"
+					"tag": "release-2.32.66",
+					"commit": "2b38b378bb435204087f738c56524c5328f9534d"
 				}
 			]
 		},
@@ -132,8 +132,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.5.2",
-					"commit": "c720f4d3556a01916324aea155555d3efba842e8"
+					"tag": "1.5.3",
+					"commit": "b546257f770768b2c88258c533da38b91a06f737"
 				}
 			]
 		},
