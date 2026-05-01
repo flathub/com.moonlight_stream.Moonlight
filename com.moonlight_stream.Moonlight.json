@@ -82,8 +82,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-3.4.4",
-					"commit": "5848e584a1b606de26e3dbd1c7e4ecbc34f807a6"
+					"tag": "release-3.4.6",
+					"commit": "3aabb7bc5307324b67db9d45b6e0c48e7ad3a400"
 				}
 			]
 		},
@@ -100,8 +100,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"tag": "release-2.32.66",
-					"commit": "2b38b378bb435204087f738c56524c5328f9534d"
+					"tag": "release-2.32.68",
+					"commit": "84b4032aef2742f79bd7b4317a22b84b0fe14155"
 				}
 			]
 		},
