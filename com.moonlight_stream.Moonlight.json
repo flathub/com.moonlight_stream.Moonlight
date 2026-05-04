@@ -82,8 +82,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-3.4.6",
-					"commit": "3aabb7bc5307324b67db9d45b6e0c48e7ad3a400"
+					"//": "branch: release-3.4.x",
+					"commit": "52b6bceedf36f88f24e3864aa5b5309b36ecc788"
 				}
 			]
 		},
@@ -107,17 +107,20 @@
 		},
 		{
 			"name": "SDL2_ttf",
+			"buildsystem": "cmake-ninja",
+			"builddir": true,
 			"build-options": {
 				"config-opts": [
-					"--disable-rpath",
-					"--disable-static"
+					"-DSDL2TTF_VENDORED=ON",
+					"-DSDL2TTF_SAMPLES=OFF"
 				]
 			},
 			"sources": [
 				{
-					"type": "archive",
-					"url": "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.22.0/SDL2_ttf-2.22.0.tar.gz",
-					"sha256": "d48cbd1ce475b9e178206bf3b72d56b66d84d44f64ac05803328396234d67723"
+					"type": "git",
+					"url": "https://github.com/libsdl-org/SDL_ttf.git",
+					"//": "branch: SDL2",
+					"commit": "a883e490e30fb44a5336ea3dcb990c6982c5216f"
 				}
 			]
 		},
@@ -177,8 +180,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_8.1_r2",
-					"commit": "508d0751aca9f94b9b01209d57483965da074075"
+					"//": "branch: moonlight_8.1.1_r1",
+					"commit": "f116128cafb244bc0f809d0285932ced0471268d"
 				}
 			]
 		},
