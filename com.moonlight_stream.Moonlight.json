@@ -39,8 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"tag": "v7.360.1",
-					"commit": "cee9b076f2c63104ccfd497fa79c39a867293ec4"
+					"commit": "b915882db8d349cc1831c3d3978ee7d5f914b10b"
 				}
 			],
 			"cleanup": [
@@ -75,15 +74,16 @@
 					"-DSDL_RPATH=OFF",
 					"-DSDL_KMSDRM=OFF",
 					"-DSDL_INSTALL_DOCS=OFF",
-					"-DSDL_TEST_LIBRARY=OFF"
+					"-DSDL_TEST_LIBRARY=OFF",
+					"-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON"
 				]
 			},
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"//": "branch: release-3.4.x",
-					"commit": "321557f33971b817484f30d8f6cfbeb2715e4c17"
+					"tag": "release-3.4.10",
+					"commit": "8e37db5e797b6167f3a00d697d816a684bd259c7"
 				}
 			]
 		},
@@ -147,6 +147,7 @@
 					"--fatal-warnings",
 					"--disable-stripping",
 					"--enable-pic",
+					"--enable-lto",
 					"--enable-shared",
 					"--disable-static",
 					"--disable-all",
