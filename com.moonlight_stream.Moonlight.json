@@ -74,7 +74,8 @@
 					"-DSDL_RPATH=OFF",
 					"-DSDL_KMSDRM=OFF",
 					"-DSDL_INSTALL_DOCS=OFF",
-					"-DSDL_TEST_LIBRARY=OFF"
+					"-DSDL_TEST_LIBRARY=OFF",
+					"-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON"
 				]
 			},
 			"sources": [
@@ -146,6 +147,7 @@
 					"--fatal-warnings",
 					"--disable-stripping",
 					"--enable-pic",
+					"--enable-lto",
 					"--enable-shared",
 					"--disable-static",
 					"--disable-all",
