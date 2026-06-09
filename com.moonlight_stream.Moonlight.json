@@ -39,7 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"commit": "b915882db8d349cc1831c3d3978ee7d5f914b10b"
+					"commit": "d4624cbfb37fdef337a7da5794b66202671a89cd"
 				}
 			],
 			"cleanup": [
@@ -100,8 +100,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"tag": "release-2.32.68",
-					"commit": "84b4032aef2742f79bd7b4317a22b84b0fe14155"
+					"tag": "release-2.32.70",
+					"commit": "a53b6ad90ecd2d0ccfe01d5cfd2059793acf8c12"
 				}
 			]
 		},
