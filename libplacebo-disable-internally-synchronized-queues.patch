@@ -1,0 +1,18 @@
+diff --git a/src/vulkan/context.c b/src/vulkan/context.c
+index bc9084a..642f7b1 100644
+--- a/src/vulkan/context.c
++++ b/src/vulkan/context.c
+@@ -265,7 +265,12 @@ static_assert(PL_ARRAY_SIZE(pl_vulkan_recommended_extensions) + 1 ==
+ #ifdef VK_KHR_internally_synchronized_queues
+ static const VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR synchronized_queues = {
+     .sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INTERNALLY_SYNCHRONIZED_QUEUES_FEATURES_KHR,
+-    .internallySynchronizedQueues = true,
++    // Explicitly disabled: creating queues with non-zero VkDeviceQueueCreateFlags
++    // crashes gamescope's WSI layer (vkroots fetches queues with the legacy
++    // vkGetDeviceQueue, which returns NULL for flagged queues). External queue
++    // locking is retained, matching behavior prior to this extension's adoption.
++    // See moonlight-qt#1925 / moonlight-qt#1930.
++    .internallySynchronizedQueues = false,
+ };
+ #endif
+ 
