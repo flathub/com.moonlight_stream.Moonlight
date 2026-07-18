@@ -40,6 +40,10 @@
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
 					"commit": "d4624cbfb37fdef337a7da5794b66202671a89cd"
+				},
+				{
+					"type": "patch",
+					"path": "libplacebo-disable-internally-synchronized-queues.patch"
 				}
 			],
 			"cleanup": [
