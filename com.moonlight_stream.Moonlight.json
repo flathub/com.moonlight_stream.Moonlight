@@ -1,7 +1,7 @@
 {
 	"app-id": "com.moonlight_stream.Moonlight",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "6.10",
+	"runtime-version": "6.11",
 	"sdk": "org.kde.Sdk",
 	"command": "moonlight",
 	"rename-icon": "moonlight",
@@ -39,7 +39,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"commit": "d4624cbfb37fdef337a7da5794b66202671a89cd"
+					"commit": "4d82c6898551068d4ae6a6b5538efcddc2c7cf64"
 				},
 				{
 					"type": "patch",
@@ -86,8 +86,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-3.4.12",
-					"commit": "f87239e71e42da91ca317a12eefb82cfbf3393eb"
+					"tag": "release-3.4.14",
+					"commit": "147a8ee32dbf9ac02f3794964490687b6bbda1bc"
 				}
 			]
 		},
@@ -139,8 +139,8 @@
 				{
 					"type": "git",
 					"url": "https://code.videolan.org/videolan/dav1d.git",
-					"tag": "1.5.3",
-					"commit": "b546257f770768b2c88258c533da38b91a06f737"
+					"tag": "1.5.4",
+					"commit": "54706fc6bc0cdecab7e9593974a4039cc038fca7"
 				}
 			]
 		},
@@ -185,8 +185,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_8.1.1_r1",
-					"commit": "f116128cafb244bc0f809d0285932ced0471268d"
+					"//": "branch: moonlight_9.0_r1",
+					"commit": "d17de7e33f1332cc2fb3f5afab9ed4f29699c5a0"
 				}
 			]
 		},
@@ -241,6 +241,14 @@
 				{
 					"type": "patch",
 					"path": "0003-Fix-incorrect-toolbar-color-on-Qt-6.9.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0004-Use-new-avcodec_get_supported_config-API-in-FFmpeg-7.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0005-Use-new-Vulkan-queue-API-in-FFmpeg-7.1.patch"
 				}
 			]
 		}
