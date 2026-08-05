@@ -185,8 +185,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_8.1.1_r1",
-					"commit": "f116128cafb244bc0f809d0285932ced0471268d"
+					"//": "branch: moonlight_9.0_r1",
+					"commit": "d17de7e33f1332cc2fb3f5afab9ed4f29699c5a0"
 				}
 			]
 		},
@@ -241,6 +241,14 @@
 				{
 					"type": "patch",
 					"path": "0003-Fix-incorrect-toolbar-color-on-Qt-6.9.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0004-Use-new-avcodec_get_supported_config-API-in-FFmpeg-7.patch"
+				},
+				{
+					"type": "patch",
+					"path": "0005-Use-new-Vulkan-queue-API-in-FFmpeg-7.1.patch"
 				}
 			]
 		}
