@@ -206,10 +206,10 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
+					"url": "https://github.com/VicenteOlmos/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v6.1.0",
-					"commit": "f786e94c7b2f943e24e65d7d74deb539b827fc84"
+					"branch": "fix/pr1853-audio-diagnostics",
+					"commit": "8c0ff0994824e3399660b1f31528cc02273c0fe0"
 				}
 			]
 		}
