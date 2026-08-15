@@ -228,26 +228,6 @@
 					"url": "https://github.com/VicenteOlmos/moonlight-qt.git",
 					"disable-shallow-clone": true,
 					"commit": "8c0ff0994824e3399660b1f31528cc02273c0fe0"
-				},
-				{
-					"type": "patch",
-					"path": "0001-Fix-null-window-on-Qt-6.9.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0002-Fix-tooltip-layout-with-Qt-6.9.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0003-Fix-incorrect-toolbar-color-on-Qt-6.9.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0004-Use-new-avcodec_get_supported_config-API-in-FFmpeg-7.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0005-Use-new-Vulkan-queue-API-in-FFmpeg-7.1.patch"
 				}
 			]
 		}
