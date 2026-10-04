@@ -13,7 +13,6 @@
 		"--socket=pulseaudio",
 		"--device=all",
 		"--talk-name=org.freedesktop.ScreenSaver",
-		"--env=IGNORE_RFI_LATENCY_BUG=1",
 		"--env=QT_QUICK_CONTROLS_STYLE=Material",
 		"--env=LIBVA_DRIVER_NAME=",
 		"--unset-env=LIBVA_DRIVER_NAME",
@@ -39,7 +38,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"commit": "4d82c6898551068d4ae6a6b5538efcddc2c7cf64"
+					"commit": "92b5ac6db79f4d680eb656692f7bf51e9606f42a"
 				},
 				{
 					"type": "patch",
@@ -49,23 +48,6 @@
 			"cleanup": [
 				"/include",
 				"/lib/pkgconfig"
-			]
-		},
-		{
-			"name": "libdecor",
-			"buildsystem": "meson",
-			"build-options": {
-				"config-opts": [
-					"-Ddemo=false"
-				]
-			},
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
-					"tag": "0.2.2",
-					"commit": "7807ae3480f5c6a37c5e8505d94af1e764aaf704"
-				}
 			]
 		},
 		{
@@ -86,8 +68,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-3.4.14",
-					"commit": "147a8ee32dbf9ac02f3794964490687b6bbda1bc"
+					"tag": "release-3.4.18",
+					"commit": "829a65d769d935c4852f8159e964312c0957260a"
 				}
 			]
 		},
@@ -104,8 +86,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"tag": "release-2.32.70",
-					"commit": "a53b6ad90ecd2d0ccfe01d5cfd2059793acf8c12"
+					"tag": "release-2.32.74",
+					"commit": "e4df8a55f20da762290a78c2bbe8f8d89d01486a"
 				}
 			]
 		},
@@ -185,8 +167,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/cgutman/FFmpeg.git",
-					"//": "branch: moonlight_9.0_r1",
-					"commit": "d17de7e33f1332cc2fb3f5afab9ed4f29699c5a0"
+					"//": "branch: moonlight_9.0.2_r1",
+					"commit": "00899bea7fbfd93bca9eea399dcb9c7f2b78f938"
 				}
 			]
 		},
@@ -210,45 +192,13 @@
 			"config-opts": [
 				"QMAKE_RPATHDIR=/app/lib"
 			],
-			"build-options": {
-				"config-opts": [
-					"CONFIG+=disable-cuda"
-				],
-				"arch": {
-					"x86_64": {
-						"config-opts": [
-							"CONFIG+=disable-libdrm"
-						]
-					}
-				}
-			},
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/moonlight-stream/moonlight-qt.git",
 					"disable-shallow-clone": true,
-					"tag": "v6.1.0",
-					"commit": "f786e94c7b2f943e24e65d7d74deb539b827fc84"
-				},
-				{
-					"type": "patch",
-					"path": "0001-Fix-null-window-on-Qt-6.9.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0002-Fix-tooltip-layout-with-Qt-6.9.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0003-Fix-incorrect-toolbar-color-on-Qt-6.9.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0004-Use-new-avcodec_get_supported_config-API-in-FFmpeg-7.patch"
-				},
-				{
-					"type": "patch",
-					"path": "0005-Use-new-Vulkan-queue-API-in-FFmpeg-7.1.patch"
+					"tag": "v6.2.0",
+					"commit": "de2467e433821664cdd2224aad8c89a625be1ad9"
 				}
 			]
 		}
