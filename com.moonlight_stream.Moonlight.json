@@ -170,7 +170,7 @@
 			]
 		},
 		{
-			"name": "gamescope-wsi",
+			"name": "gamescope-wsi-x86_64",
 			"buildsystem": "simple",
 			"build-commands": [
 				"install -Dm755 VkLayer_FROG_gamescope_wsi.x86_64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.x86_64.json"
@@ -180,6 +180,20 @@
 				{
 					"type": "file",
 					"path": "VkLayer_FROG_gamescope_wsi.x86_64.json"
+				}
+			]
+		},
+		{
+			"name": "gamescope-wsi-aarch64",
+			"buildsystem": "simple",
+			"build-commands": [
+				"install -Dm755 VkLayer_FROG_gamescope_wsi.aarch64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.aarch64.json"
+			],
+			"only-arches": [ "aarch64" ],
+			"sources": [
+				{
+					"type": "file",
+					"path": "VkLayer_FROG_gamescope_wsi.aarch64.json"
 				}
 			]
 		},
