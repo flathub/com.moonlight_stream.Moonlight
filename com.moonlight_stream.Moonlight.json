@@ -39,11 +39,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/haasn/libplacebo.git",
-					"commit": "92b5ac6db79f4d680eb656692f7bf51e9606f42a"
-				},
-				{
-					"type": "patch",
-					"path": "libplacebo-disable-internally-synchronized-queues.patch"
+					"tag": "v7.387.0",
+					"commit": "275f7dea27924cdd34ab2e6c20e448b6bc4fab65"
 				}
 			],
 			"cleanup": [
@@ -69,8 +66,8 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/SDL.git",
-					"tag": "release-3.4.18",
-					"commit": "829a65d769d935c4852f8159e964312c0957260a"
+					"tag": "release-3.4.20",
+					"commit": "f00dc919ca35b9756316e86c4777392de442f9b2"
 				}
 			]
 		},
@@ -87,8 +84,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/libsdl-org/sdl2-compat.git",
-					"tag": "release-2.32.74",
-					"commit": "e4df8a55f20da762290a78c2bbe8f8d89d01486a"
+					"commit": "bebc6eb01397497130ca58a1cb48c8bd141422f5"
 				}
 			]
 		},
@@ -174,7 +170,7 @@
 			]
 		},
 		{
-			"name": "gamescope-wsi",
+			"name": "gamescope-wsi-x86_64",
 			"buildsystem": "simple",
 			"build-commands": [
 				"install -Dm755 VkLayer_FROG_gamescope_wsi.x86_64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.x86_64.json"
@@ -184,6 +180,20 @@
 				{
 					"type": "file",
 					"path": "VkLayer_FROG_gamescope_wsi.x86_64.json"
+				}
+			]
+		},
+		{
+			"name": "gamescope-wsi-aarch64",
+			"buildsystem": "simple",
+			"build-commands": [
+				"install -Dm755 VkLayer_FROG_gamescope_wsi.aarch64.json /app/share/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.aarch64.json"
+			],
+			"only-arches": [ "aarch64" ],
+			"sources": [
+				{
+					"type": "file",
+					"path": "VkLayer_FROG_gamescope_wsi.aarch64.json"
 				}
 			]
 		},
